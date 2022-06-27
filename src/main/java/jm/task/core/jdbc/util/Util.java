@@ -5,13 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    Connection con;
+    public static Connection connection;
 
-    {
+    static {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pp_1_1_3", "SSidash", "KataPP113");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pp_1_1_3", "SSidash", "KataPP113");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 }
