@@ -29,7 +29,7 @@ public class UserDaoJDBCImpl implements UserDao {
                     "age SMALLINT NOT NULL," +
                     "PRIMARY KEY(ID))");
         } catch (SQLException e) {
-//            throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -38,7 +38,7 @@ public class UserDaoJDBCImpl implements UserDao {
             Statement dropUsersTable = Util.connection.createStatement();
             dropUsersTable.executeUpdate("DROP TABLE if exists Users");
         } catch (SQLException e) {
-//            throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -51,7 +51,7 @@ public class UserDaoJDBCImpl implements UserDao {
             saveUser.execute();
             System.out.println("User с именем - " + name + " добавлен в базу данных");
         } catch (SQLException e) {
-//            throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -61,7 +61,7 @@ public class UserDaoJDBCImpl implements UserDao {
             removeUser.setLong(1, id);
             removeUser.execute();
         } catch (SQLException e) {
-//            throw new RuntimeException();
+            throw new RuntimeException();
         }
     }
 
@@ -80,7 +80,7 @@ public class UserDaoJDBCImpl implements UserDao {
             }
 
         } catch (SQLException e) {
-//            throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
         return userList;
     }
@@ -90,7 +90,7 @@ public class UserDaoJDBCImpl implements UserDao {
             Statement cleanUsers = Util.connection.createStatement();
             cleanUsers.executeUpdate("TRUNCATE TABLE Users");
         } catch (SQLException e) {
-//            throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
 
     }
