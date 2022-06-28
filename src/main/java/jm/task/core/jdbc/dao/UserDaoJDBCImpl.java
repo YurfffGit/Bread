@@ -52,7 +52,6 @@ public class UserDaoJDBCImpl implements UserDao {
             throw new RuntimeException(e);
         }
     }
-
     public void saveUser(String name, String lastName, byte age) {
         try (PreparedStatement saveUser = connection.prepareStatement("INSERT INTO Users VALUES(DEFAULT, ?, ?, ?)")) {
             connection.setAutoCommit(false);
@@ -91,7 +90,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
         try (Statement getAll = connection.createStatement()) {
-            connection.setAutoCommit(false);
+//            connection.setAutoCommit(false);
             ResultSet resultSet = getAll.executeQuery("SELECT * FROM Users");
             while (resultSet.next()) {
                 User user = new User();
@@ -101,13 +100,13 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setAge(resultSet.getByte("age"));
                 userList.add(user);
             }
-            connection.commit();
+//            connection.commit();
         } catch (SQLException e) {
-            try {
-                connection.rollback();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
+//            try {
+//                connection.rollback();
+//            } catch (SQLException ex) {
+//                throw new RuntimeException(ex);
+//            }
             throw new RuntimeException(e);
         }
         return userList;
