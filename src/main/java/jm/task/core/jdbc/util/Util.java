@@ -23,9 +23,13 @@ public class Util {
         return connection;
     }
 
-    public static Util getInstance() throws SQLException {
-        if (instance == null || instance.getConnection().isClosed()) {
-            instance = new Util();
+    public static Util getInstance() {
+        try {
+            if (instance == null || instance.getConnection().isClosed()) {
+                instance = new Util();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         return instance;
     }
