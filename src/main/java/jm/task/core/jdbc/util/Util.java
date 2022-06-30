@@ -58,14 +58,14 @@ public class Util {
             try {
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
-                settings.put(Environment.DRIVER, DRIVER); //Environment
-                settings.put(Environment.URL, URL);
-                settings.put(Environment.USER, USER);
-                settings.put(Environment.PASS, PASSWORD);
-                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-                settings.put(Environment.SHOW_SQL, "true");
-                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+                settings.put(AvailableSettings.DRIVER, DRIVER); //Environment
+                settings.put(AvailableSettings.URL, URL);
+                settings.put(AvailableSettings.USER, USER);
+                settings.put(AvailableSettings.PASS, PASSWORD);
+                settings.put(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQLDialect");
+                settings.put(AvailableSettings.SHOW_SQL, "true");
+                settings.put(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+                settings.put(AvailableSettings.HBM2DDL_AUTO, "create-drop");
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
