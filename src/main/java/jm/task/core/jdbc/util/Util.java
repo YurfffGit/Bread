@@ -1,6 +1,5 @@
 package jm.task.core.jdbc.util;
 
-import jakarta.persistence.EntityGraph;
 import jm.task.core.jdbc.model.User;
 import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -62,10 +61,10 @@ public class Util {
                 settings.put(AvailableSettings.URL, URL);
                 settings.put(AvailableSettings.USER, USER);
                 settings.put(AvailableSettings.PASS, PASSWORD);
-                settings.put(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQLDialect");
+                settings.put(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(AvailableSettings.SHOW_SQL, "true");
                 settings.put(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-                settings.put(AvailableSettings.HBM2DDL_AUTO, "create-drop");
+//                settings.put(AvailableSettings.HBM2DDL_AUTO, "create-drop");
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
