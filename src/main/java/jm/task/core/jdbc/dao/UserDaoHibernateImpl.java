@@ -54,8 +54,9 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = null;
         try (Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            String sql = "INSERT INTO Users (name, lastname, age) VALUES (\'" + name + "\', \'" + lastName + "\', \'" + age + "\')";
-            session.createNativeQuery(sql).executeUpdate();
+//            String sql = "INSERT INTO Users (name, lastname, age) VALUES (\'" + name + "\', \'" + lastName + "\', \'" + age + "\')";
+//            session.createNativeQuery(sql).executeUpdate();
+            session.persist(new User(name, lastName, age));
             transaction.commit();
             System.out.println("User с именем - " + name + " добавлен в базу данных");
         } catch (Exception e) {
